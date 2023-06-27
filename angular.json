@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pokemon:build:production"
+              "browserTarget": "poke-api:build:production"
             },
             "development": {
-              "browserTarget": "pokemon:build:development"
+              "browserTarget": "poke-api:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,6 +100,6 @@
     }
   },
   "cli": {
-    "analytics": "5e677ffc-26f7-4a9d-b758-67f8068757e3"
+    "analytics": "397cfae6-77ba-420a-ab75-2204e6c49bd5"
   }
 }
