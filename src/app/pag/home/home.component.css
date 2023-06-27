@@ -1,0 +1,193 @@
+.view {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.view .inputBox {
+    position: relative;
+    width: 400px;
+    height: 30px;
+}
+
+.view .inputBox #search {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    text-indent: 5px;
+}
+
+.view .inputBox #search:focus ~ label,
+.view .inputBox #search:valid ~ label {
+    display: none;
+}
+
+.view .inputBox label {
+    position: absolute;
+    top: 0;
+    left: 5px;
+}
+
+.view .notFound {
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.view .notFound p {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    margin: 0 auto;
+    z-index: 2;
+
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.view .notFound img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 50px auto;
+}
+
+.view .notFound.disabled {
+    display: none;
+}
+
+.view .galery {
+    width: 100%;
+    height: auto;
+    margin: 20px 0 40px 0;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2vw;
+}
+
+.view .galery.disabled {
+    display: none;
+}
+
+.view .galery .box {
+    position: relative;
+    width: 150px;
+    max-height: 180px;
+    min-height: 180px;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .4s ease-out
+}
+
+.view .galery .box:hover {
+    transform: scale(1.2);
+}
+
+.view .galery .box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.view .galery .box p {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    white-space: nowrap;
+    font-size: 1.125rem;
+}
+
+.view .btn {
+    width: 160px;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid #000;
+    outline: none;
+    background-color: transparent;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.view .btn.disabled {
+    display: none;
+}
+
+
+
+/* Define a cor de fundo apartir do tipo do pokémon   ! Faltam steel e dragon ! */
+.view .galery .box.grass {
+    background-color: #2e722e;
+    color: #dadada;
+}
+
+.view .galery .box.water {
+    background-color: aqua;
+}
+
+.view .galery .box.normal {
+    background-color: var(--bg);
+}
+
+.view .galery .box.bug {
+    background-color: #a9ffa9;
+}
+
+.view .galery .box.fire {
+    background-color: #b33313d7;
+    color: #dadada;
+}
+
+.view .galery .box.poison {
+    background-color: #0c420ce0;
+    color: #dadada;
+}
+
+.view .galery .box.fairy {
+    background-color: #ff6de7e1;
+}
+
+.view .galery .box.psychic {
+    background-color: #8d00769c;
+}
+
+.view .galery .box.electric {
+    background-color: #ffe602;
+}
+
+.view .galery .box.rock {
+    background-color: #643f30e7;
+    color: #dadada;
+}
+
+.view .galery .box.ground {
+    background-color: #515151;
+    color: #dadada;
+}
+
+.view .galery .box.fighting {
+    background-color: #5f3f31b6;
+}
+
+.view .galery .box.ice {
+    background-color: #004585;
+}
+
+.view .galery .box.ghost {
+    background-color: #421b3ce1;
+    color: #dadada;
+}
+
+.view .galery .box.dark {
+    background-color: #262626;
+    color: #dadada;
+}

@@ -1,0 +1,57 @@
+<h3 style="text-align: center; margin-bottom: 18px;">
+    Em breve... Detalhes das evoluções dos pokémons, melhor design e responsividade.
+</h3>
+
+<div class="view {{ item.types[0].type.name }}" *ngFor="let item of pokemonArray">
+    <!-- Exibe a imagem do pokémon -->
+    <img src="{{ item.sprites.front_default }}" alt="Imagem do Pokémon {{ item.name }}" />
+
+    <table>
+        <!-- Exibe a experiência do Pokémon -->
+        <tr>
+            <th>Experiência: {{ item.base_experience }}</th>
+        </tr>
+
+        <!-- Exibe o peso e a altura o Pokémon e trata antes de exibir -->
+        <tr>
+            <th>Altura: {{ (item.height / 10).toFixed(1) }} m</th>
+        </tr>
+
+        <tr>
+            <th>Peso: {{ (item.weight / 10).toFixed(1) }} kg</th>
+        </tr>
+
+        <!-- Exibe os tipos do Pokémon -->
+        <tr>
+            <th>Tipo do Pokémon:</th>
+        </tr>
+
+        <tr>
+            <td *ngFor="let types of item.types">
+                {{ types.type.name }}
+            </td>
+        </tr>
+
+        <!-- Exibe os status do Pokémon -->
+        <tr>
+            <th>Status do Pokémon:</th>
+        </tr>
+
+        <tr *ngFor="let status of item.stats">
+            <td>
+                {{ status.stat.name }}: {{ status.base_stat }}
+            </td>
+        </tr>
+
+        <!-- Exibe as habilidades -->
+        <tr>
+            <th>Habilidades:</th>
+        </tr>
+
+        <tr *ngFor="let Habilidades of item.abilities">
+            <th>
+                {{ Habilidades.ability.name }}
+            </th>
+        </tr>
+    </table>
+</div>
