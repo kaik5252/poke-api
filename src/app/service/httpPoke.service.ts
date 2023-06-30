@@ -12,30 +12,30 @@ export class HttpPokeService {
   constructor(private http: HttpClient) { }
 
   listing(): Observable<any> {
-    return this.http.get(`${this.url}pokemon/`);
+    return this.http.get(`${this.url}pokemon/`)
   }
 
   moreListing(): Observable<any> {
-    return this.http.get(`${this.next}`);
+    return this.http.get(`${this.next}`)
   }
 
   listingSearch(search: any): Observable<any> {
-    return this.http.get(`${this.url}pokemon/${search}`);
+    return this.http.get(`${this.url}pokemon/${search}`)
   }
 
   listingPokemon(index: any): Observable<any> {
-    return this.http.get(`${this.url}pokemon/${index}`);
+    return this.http.get(`${this.url}pokemon/${index}`)
   }
 
   getPokemon(url: any): Observable<any> {
-    return this.http.get(`${url}`);
+    return this.http.get(`${url}`)
   }
 
   getType(url: any): Observable<any> {
-    return this.http.get(url);
+    return this.http.get(url)
   }
 
   getEvolution(index: any): Observable<any> {
-    return this.http.get(`${this.url}evolution-chain/${index}`);
+    return this.http.get(`${this.url}evolution-chain/${index}`)
   }
 }

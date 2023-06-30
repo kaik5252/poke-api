@@ -1,8 +1,8 @@
 <div class="view">
     <div class="inputBox">
-        <input type="search" name="search" id="search" [(ngModel)]="search" (search)="listingPoke()"
-            (keyup)="searchPoke()" required/>
-            <label for="search">Pesquisar...</label>
+        <input type="search" name="search" id="search" [(ngModel)]="search" (search)="listingPoke()" required/>
+        <label for="search">Pesquisar...</label>
+        <button type="button" (click)="searchPoke()">Pesquisar</button>
     </div>
 
     <div class="notFound" [ngClass]="{'disabled': searchFound}">

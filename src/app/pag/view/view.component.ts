@@ -16,24 +16,22 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.index = params.get('id');
+      this.index = params.get('id')
     });
 
     this.listing();
-    this.evolution();
+    this.evolution()
   }
 
   listing() {
     this.service.listingPokemon(this.index).subscribe((e) => {
-      this.pokemonArray.push(e);
-      // console.log(e);
-    });
+      this.pokemonArray.push(e)
+    })
   }
 
   evolution() {
     this.service.getEvolution(this.index).subscribe((e) => {
-      this.pokemonEvolution.push(e);
-      // console.log(e);
-    });
+      this.pokemonEvolution.push(e)
+    })
   }
 }

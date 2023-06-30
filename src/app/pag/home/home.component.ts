@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private service: HttpPokeService) { }
 
   ngOnInit(): void {
-    this.listingPoke();
+    this.listingPoke()
   }
 
   searchPoke() {
@@ -23,11 +23,11 @@ export class HomeComponent implements OnInit {
         this.listingPoke();
         return;
       }
+
       this.searchFound = true;
       this.pokemonArray = [];
-      this.pokemonArray.push(pokemon);
-
-    }, () => { this.searchFound = false; return; });
+      this.pokemonArray.push(pokemon)
+    }, () => { this.searchFound = false })
   }
 
   listingPoke() {
@@ -36,23 +36,23 @@ export class HomeComponent implements OnInit {
       this.service.next = pokemon.next;
       this.pokemonArray = [];
       for (let i = 0; i < pokemon.results.length; i++) {
-        this.getDetails(pokemon.results[i].url);
+        this.getDetails(pokemon.results[i].url)
       }
-    });
+    })
   }
 
   moreListingPoke() {
     this.service.moreListing().subscribe(pokemon => {
       this.service.next = pokemon.next;
       for (let i = 0; i < pokemon.results.length; i++) {
-        this.getDetails(pokemon.results[i].url);
+        this.getDetails(pokemon.results[i].url)
       }
-    });
+    })
   }
 
   getDetails(url: any) {
     this.service.getPokemon(url).subscribe(pokemon => {
-      this.pokemonArray.push(pokemon);
-    });
+      this.pokemonArray.push(pokemon)
+    })
   }
 }
