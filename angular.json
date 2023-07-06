@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "poke-api": {
+    "poke-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/poke-api",
+            "outputPath": "dist/poke-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "poke-api:build:production"
+              "browserTarget": "poke-angular:build:production"
             },
             "development": {
-              "browserTarget": "poke-api:build:development"
+              "browserTarget": "poke-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "poke-api:build"
+            "browserTarget": "poke-angular:build"
           }
         },
         "test": {
@@ -100,6 +100,6 @@
     }
   },
   "cli": {
-    "analytics": "397cfae6-77ba-420a-ab75-2204e6c49bd5"
+    "analytics": "272ee043-eb1b-4c1b-a611-742bb392d805"
   }
 }

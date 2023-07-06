@@ -1,8 +1,8 @@
 <div class="view">
     <div class="inputBox">
-        <input type="search" name="search" id="search" [(ngModel)]="search" (search)="listingPoke()" required/>
+        <input type="search" name="search" id="search" [(ngModel)]="search" (search)="listingPoke()" />
         <label for="search">Pesquisar...</label>
-        <button type="button" (click)="searchPoke()">Pesquisar</button>
+        <button type="button" (click)="searchPoke()" class="btn" id="btnSearch">Pesquisar</button>
     </div>
 
     <div class="notFound" [ngClass]="{'disabled': searchFound}">
@@ -11,7 +11,7 @@
     </div>
 
     <div class="galery" [ngClass]="{'disabled': !searchFound }">
-        <div class="box {{ item.types[0].type.name }}" routerLink="view/{{ item.id }}" *ngFor="let item of pokemonArray">
+        <div class="box {{ item.types[0].type.name }}" routerLink="/view/{{ item.id }}" *ngFor="let item of pokemonArray">
             <img src="{{ item.sprites.front_default }}" alt="Imagem do Pokémon {{ item.name }}" />
             <p class="name">{{ item.name }}</p>
         </div>

@@ -1,11 +1,15 @@
 import { NgModule, ViewChild } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pag/home/home.component';
-import { ViewComponent } from './pag/view/view.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ViewComponent } from './pages/view/view.component';
+import { E404Component } from './pages/e404/e404.component';
+import { environment as env } from 'src/environments/environment';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'view/:id', component: ViewComponent }
+  { path: 'home', title: `${env.appName} - Ínicio`, component: HomeComponent },
+  { path: 'view/:id', title: `${env.appName} - Visualizar`, component: ViewComponent },
+  { path: '404', title: `${env.appName} - Error 404`, component: E404Component },
+  { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];
 
 @NgModule({

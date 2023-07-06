@@ -1,0 +1,76 @@
+.view {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.view .inputBox {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    display: flex;
+}
+
+.view .inputBox #search {
+    width: 400px;
+    height: 100%;
+    outline: none;
+    text-indent: 5px;
+}
+
+.view .inputBox #search:focus ~ label,
+.view .inputBox #search:valid ~ label {
+    display: none;
+}
+
+.view .inputBox label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.view #btnSearch {
+    padding: 0;
+}
+
+.view .galery {
+    width: 100%;
+    height: auto;
+    margin: 20px 0 40px 0;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2vw;
+}
+
+.view .galery .box {
+    position: relative;
+    width: 150px;
+    max-height: 180px;
+    min-height: 180px;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .4s ease-out
+}
+
+.view .galery .box:hover {
+    transform: scale(1.2);
+}
+
+.view .galery .box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.view .galery .box p {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    white-space: nowrap;
+    font-size: 1.125rem;
+}
