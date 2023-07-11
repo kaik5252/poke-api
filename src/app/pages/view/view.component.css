@@ -8,80 +8,23 @@
 }
 
 .view img {
-    width: 26%;
-    height: 26%;
+    width: 25%;
+    height: 25%;
     object-fit: cover;
 }
 
-.view table {
-    width: 74%;
+.view .inf {
+    width: 75%;
     height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 3vw;
 }
 
-/* Define a cor de fundo apartir do tipo do pokémon   ! Faltam steel e dragon ! */
-.grass {
-    background-color: #2e722e;
-    color: #dadada;
-}
-
-.water {
-    background-color: aqua;
-}
-
-.normal {
-    background-color: var(--bg);
-}
-
-.bug {
-    background-color: #a9ffa9;
-}
-
-.fire {
-    background-color: #b33313d7;
-    color: #dadada;
-}
-
-.poison {
-    background-color: #0c420ce0;
-    color: #dadada;
-}
-
-.fairy {
-    background-color: #ff6de7e1;
-}
-
-.psychic {
-    background-color: #8d00769c;
-}
-
-.electric {
-    background-color: #ffe602;
-}
-
-.rock {
-    background-color: #643f30e7;
-    color: #dadada;
-}
-
-.ground {
-    background-color: #515151;
-    color: #dadada;
-}
-
-.fighting {
-    background-color: #5f3f31b6;
-}
-
-.ice {
-    background-color: #004585;
-}
-
-.ghost {
-    background-color: #421b3ce1;
-    color: #dadada;
-}
-
-.dark {
-    background-color: #262626;
-    color: #dadada;
+.view .inf .col {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }

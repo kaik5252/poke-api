@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   search: string = "";
-  searchFound: boolean = true;
+  notFound: boolean = false;
+  loading: boolean = false;
   pokemonArray: Array<any> = new Array();
 
   constructor(private service: HttpPokeService, private router: Router) { }
@@ -29,21 +30,23 @@ export class HomeComponent implements OnInit {
         return;
       }
 
-      this.searchFound = true;
+      this.notFound = true;
       this.pokemonArray = [];
       this.pokemonArray.push(pokemon)
-    }, () => { this.searchFound = false })
+    }, () => { this.notFound = false })
   }
 
   listingPoke() {
+    this.loading = true;
     this.service.listing().subscribe(pokemon => {
-      this.searchFound = true;
+      this.notFound = true;
       this.service.next = pokemon.next;
       this.pokemonArray = [];
       for (let i = 0; i < pokemon.results.length; i++) {
         this.getDetails(pokemon.results[i].url)
       }
     })
+    this.loading = false;
   }
 
   moreListingPoke() {

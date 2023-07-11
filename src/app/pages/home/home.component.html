@@ -1,21 +1,27 @@
 <div class="view">
     <div class="inputBox">
-        <input type="search" name="search" id="search" [(ngModel)]="search" (search)="listingPoke()" required />
+        <input type="search" name="search" id="search" [(ngModel)]="search" (search)="listingPoke()" autocomplete="off" required />
         <label for="search">Pesquisar...</label>
         <button type="button" (click)="searchPoke()" class="btn" id="btnSearch">Pesquisar</button>
     </div>
 
-    <div class="notFound" [ngClass]="{'disabled': searchFound}">
+    <div class="notFound" *ngIf="!notFound && loading">
         <p>Pokémon não encontrado...</p>
-        <img src="../../../assets/charmander_bad.png" alt="">
+        <img src="assets/charmander_bad.png" alt="Pokémon charmander triste olhando pro nada sentado em uma pedra" />
     </div>
 
-    <div class="galery" [ngClass]="{'disabled': !searchFound }">
+    <div class="galery" *ngIf="notFound && !loading">
         <div class="box {{ item.types[0].type.name }}" (click)="handleClick(item.id)" *ngFor="let item of pokemonArray">
             <img src="{{ item.sprites.front_default }}" alt="Imagem do Pokémon {{ item.name }}" />
             <p class="name">{{ item.name }}</p>
         </div>
     </div>
 
-    <button type="button" class="btn" (click)="moreListingPoke()" [ngClass]="{'disabled': !searchFound}">Carregar Mais!</button>
+    <div class="loading" *ngIf="loading" >
+        <p>Carregando</p>
+        <span class="pt">.</span>
+        <span class="pt">.</span>
+        <span class="pt">.</span>
+    </div>
+    <button type="button" class="btn" (click)="moreListingPoke()" *ngIf="notFound && !loading">Carregar Mais!</button>
 </div>

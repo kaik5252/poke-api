@@ -2,6 +2,9 @@
     width: 90%;
     height: auto;
     margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .view .inputBox {
@@ -32,6 +35,43 @@
 .view #btnSearch {
     padding: 0;
     margin-left: 10px;
+}
+
+.loading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.loading p {
+    display: inline;
+}
+
+.loading .pt {
+    display: inline-block;
+    margin: 0 4px;
+}
+
+.loading .pt:nth-child(2) {
+    animation: loading .8s linear infinite;
+}
+
+.loading .pt:nth-child(3) {
+    animation: loading .8s linear .2s infinite;
+}
+
+.loading .pt:nth-child(4) {
+    animation: loading .8s linear .4s infinite;
+}
+
+@keyframes loading {
+    50% {
+        transform: translate(0, -8px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 .view .galery {

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { ViewComponent } from './pages/view/view.component';
-import { HeaderComponent } from './pages/header/header.component';
+import { NavComponent } from './pages/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -17,7 +17,7 @@ import { E404Component } from './pages/e404/e404.component';
     AppComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent,
+    NavComponent,
     ViewComponent,
     E404Component
   ],

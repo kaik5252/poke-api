@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ViewComponent } from './pages/view/view.component';
 import { E404Component } from './pages/e404/e404.component';
-import { environment as env } from './../environments/environment';
+import { environment as env } from 'src/environments/environment';
 
 const routes: Routes = [
   {
@@ -25,12 +25,12 @@ const routes: Routes = [
     path: '404', 
     title: `${env.appName} - Error 404`, 
     component: E404Component 
-  }
-  /*{ 
+  },
+  { 
     path: '**', 
     redirectTo: '404', 
     pathMatch: 'full' 
-  }*/
+  }
 ];
 
 @NgModule({

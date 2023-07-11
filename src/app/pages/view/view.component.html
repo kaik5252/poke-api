@@ -1,52 +1,43 @@
 <div class="view {{ item.types[0].type.name }}" *ngFor="let item of pokemonArray">
     <img src="{{ item.sprites.front_default }}" alt="Imagem do Pokémon {{ item.name }}" />
 
-    <table>
-        <!-- Exibe a experiência do Pokémon -->
-        <tr>
+    <div class="inf">
+        <div class="col">
+            <!-- Exibe a experiência do Pokémon -->
             <th>Experiência: {{ item.base_experience }}</th>
-        </tr>
 
-        <!-- Exibe o peso e a altura o Pokémon e trata antes de exibir -->
-        <tr>
+            <!-- Exibe a altura do Pokémon e trata antes de exibir -->
             <th>Altura: {{ (item.height / 10).toFixed(1) }} m</th>
-        </tr>
 
-        <tr>
+            <!-- Exibe o peso do Pokémon e trata antes de exibir -->
             <th>Peso: {{ (item.weight / 10).toFixed(1) }} kg</th>
-        </tr>
+        </div>
 
         <!-- Exibe os tipos do Pokémon -->
-        <tr>
+        <div class="col">
             <th>Tipo do Pokémon:</th>
-        </tr>
 
-        <tr>
             <td *ngFor="let types of item.types">
                 {{ types.type.name }}
             </td>
-        </tr>
+        </div>
 
         <!-- Exibe os status do Pokémon -->
-        <tr>
+        <div class="col">
             <th>Status do Pokémon:</th>
-        </tr>
 
-        <tr *ngFor="let status of item.stats">
-            <td>
-                {{ status.stat.name }}: {{ status.base_stat }}
+            <td *ngFor="let status of item.stats">
+                {{ status.stat.name.replaceAll('-', ' ') }}: {{ status.base_stat }}
             </td>
-        </tr>
+        </div>
 
         <!-- Exibe as habilidades -->
-        <tr>
+        <div class="col">
             <th>Habilidades:</th>
-        </tr>
 
-        <tr *ngFor="let Habilidades of item.abilities">
-            <th>
-                {{ Habilidades.ability.name }}
-            </th>
-        </tr>
-    </table>
+            <td *ngFor="let Habilidades of item.abilities">
+                {{ Habilidades.ability.name.replaceAll('-', ' ') }}
+            </td>
+        </div>
+    </div>
 </div>
