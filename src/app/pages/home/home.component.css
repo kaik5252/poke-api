@@ -1,12 +1,3 @@
-.view {
-    width: 90%;
-    height: auto;
-    margin: 0 auto;
-
-    display: flex;
-    flex-direction: column;
-}
-
 .view .inputBox {
     position: relative;
     width: 100%;

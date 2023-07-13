@@ -1,5 +1,6 @@
 :root {
     --bg: rgba(130, 100, 197, 0.7);
+    --card: rgba(0, 100, 200, 0.4);
 }
 
 * {
@@ -14,14 +15,24 @@ body {
     font-weight: 400;
 }
 
-p {
-    margin: 0;
-}
-
 a {
     text-decoration: none;
-    color: #000;
+    color: inherit;
 }
+
+.disabled {
+    display: none;
+}
+
+.view {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
 
 .btn {
     width: 160px;
@@ -36,7 +47,7 @@ a {
     cursor: pointer;
 }
 
-.notFound {
+/*.notFound {
     position: relative;
     width: 90%;
     height: auto;
@@ -62,7 +73,7 @@ a {
     height: auto;
     display: block;
     margin: 50px auto;
-}
+}*/
 
 
 

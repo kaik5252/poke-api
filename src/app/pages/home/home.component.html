@@ -1,11 +1,17 @@
 <div class="view">
     <div class="inputBox">
-        <input type="search" name="search" id="search" [(ngModel)]="search" (search)="listingPoke()" autocomplete="off" required />
+        <input type="search" name="searchValue" id="search" [(ngModel)]="searchValue" autocomplete="off" required />
         <label for="search">Pesquisar...</label>
         <button type="button" (click)="searchPoke()" class="btn" id="btnSearch">Pesquisar</button>
     </div>
 
-    <div class="notFound" *ngIf="!notFound && loading">
+    <div class="loading">
+
+    </div>
+
+
+
+    <!--<div class="notFound" *ngIf="!notFound && loading">
         <p>Pokémon não encontrado...</p>
         <img src="assets/charmander_bad.png" alt="Pokémon charmander triste olhando pro nada sentado em uma pedra" />
     </div>
@@ -22,6 +28,9 @@
         <span class="pt">.</span>
         <span class="pt">.</span>
         <span class="pt">.</span>
-    </div>
-    <button type="button" class="btn" (click)="moreListingPoke()" *ngIf="notFound && !loading">Carregar Mais!</button>
+    </div>-->
+    
+    <button type="button" class="btn" (click)="moreListingPoke()" *ngIf="!searching && !notFound">Carregar Mais!</button>
+    
+    <button type="button" (click)="searchClean()" *ngIf="searching && !notFound">Voltar</button>
 </div>

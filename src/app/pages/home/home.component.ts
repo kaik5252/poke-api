@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpPokeService } from './../../../app/service/httpPoke.service';
+import { Component, OnInit, inject } from '@angular/core';
+import { HttpPokeService } from 'src/app/service/httpPoke.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,59 +8,109 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  search: string = "";
-  notFound: boolean = false;
-  loading: boolean = false;
+  searchValue = "";
+  notFound = false;
+  loading = false;
+  searching = false;
   pokemonArray: Array<any> = new Array();
 
-  constructor(private service: HttpPokeService, private router: Router) { }
+  private service: HttpPokeService = inject(HttpPokeService);
+  private router: Router = inject(Router);
 
   ngOnInit(): void {
     this.listingPoke()
   }
 
   handleClick(index: number) {
-    this.router.navigate(['view'], { state: { index: index } });
+    this.router.navigate(['/view'], { state: { index: index } });
   }
 
-  searchPoke() {
-    this.service.listingSearch(this.search).subscribe(pokemon => {
-      if (this.search === "") {
-        this.listingPoke();
-        return;
-      }
-
-      this.notFound = true;
-      this.pokemonArray = [];
-      this.pokemonArray.push(pokemon)
-    }, () => { this.notFound = false })
+  searchClean() {
+    this.searchValue = "";
+    this.notFound = false;
+    this.searching = false;
+    this.listingPoke()
   }
 
-  listingPoke() {
+  async searchPoke() {
+    if (this.searchValue === "") {
+      this.searchClean();
+      return
+    }
+
     this.loading = true;
-    this.service.listing().subscribe(pokemon => {
-      this.notFound = true;
-      this.service.next = pokemon.next;
+    this.searchValue = this.searchValue.toLowerCase();
+    try {
+      const pokemon = await new Promise((resolve, reject) => {
+        this.service.listingSearch(this.searchValue).subscribe(
+          (pokemon) => {
+            resolve(pokemon)
+          },
+          (error) => {
+            reject(error)
+          })
+      });
+
+      this.notFound = false;
+      this.searching = true;
       this.pokemonArray = [];
-      for (let i = 0; i < pokemon.results.length; i++) {
-        this.getDetails(pokemon.results[i].url)
-      }
-    })
-    this.loading = false;
-  }
-
-  moreListingPoke() {
-    this.service.moreListing().subscribe(pokemon => {
-      this.service.next = pokemon.next;
-      for (let i = 0; i < pokemon.results.length; i++) {
-        this.getDetails(pokemon.results[i].url)
-      }
-    })
-  }
-
-  getDetails(url: any) {
-    this.service.getPokemon(url).subscribe(pokemon => {
       this.pokemonArray.push(pokemon)
+
+    } catch (error) {
+      this.notFound = true
+    }
+
+    this.loading = false
+  }
+
+  async listingPoke() {
+    this.loading = true;
+      const pokemon = await new Promise((resolve, reject) => {
+        this.service.listing().subscribe(
+          (pokemon) => {
+          this.service.next = pokemon.next;
+          this.pokemonArray = [];
+          for (let i = 0; i < pokemon.results.length; i++) {
+            this.getDetails(pokemon.results[i].url)
+          }
+          resolve(null)
+        }, 
+        (error) => {
+          reject(error)
+        })
+      });
+
+    this.loading = false
+  }
+
+  async moreListingPoke() {
+    this.loading = true;
+    await new Promise((resolve, reject) => {
+      this.service.moreListing().subscribe(
+        (pokemon) => {
+          this.service.next = pokemon.next;
+          for (let i = 0; i < pokemon.results.length; i++) {
+            this.getDetails(pokemon.results[i].url)
+          }
+          resolve(null)
+        },
+        (error) => {
+          reject(error)
+        }
+      )
+    });
+
+    this.loading = false
+  }
+
+
+  async getDetails(url: any) {
+    await new Promise(() => {
+      this.service.getPokemon(url).subscribe(
+        (pokemon) => {
+          this.pokemonArray.push(pokemon)
+        }
+      )
     })
   }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpPokeService } from './../../../app/service/httpPoke.service';
+import { HttpPokeService } from 'src/app/service/httpPoke.service';
 
 @Component({
   selector: 'app-view',
@@ -8,18 +8,16 @@ import { HttpPokeService } from './../../../app/service/httpPoke.service';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
-  index: any;
+  private index = 0;
   pokemonArray: Array<any> = new Array();
 
-  constructor(private service: HttpPokeService, private router: Router) { }
+  private service: HttpPokeService = inject(HttpPokeService);
+  private router: Router = inject(Router);
 
   ngOnInit(): void {
+    if(history.state.index === undefined) this.router.navigate(['/home']);
     this.index = history.state.index;
-
-    if(this.index === null || this.index === undefined) {
-      this.router.navigate(['home']);
-    }
-
+    
     this.listing();
   }
 
